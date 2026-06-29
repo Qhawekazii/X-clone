@@ -51,12 +51,21 @@ function createTweet(text) {
   homeView.prepend(article);
 }
 
-function showView(name) {
+function showView(name, title = null) {
   const isExplore = name === "explore";
   homeView.hidden = isExplore;
   document.querySelector(".home-only").hidden = isExplore;
   exploreView.hidden = !isExplore;
-  viewTitle.textContent = isExplore ? "Explore" : "Home";
+
+  if (title) {
+    viewTitle.textContent = title;
+  } else if (isExplore) {
+    viewTitle.textContent = "Explore";
+  } else if (name === "home") {
+    viewTitle.textContent = "Home";
+  } else {
+    viewTitle.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  }
 
   document.querySelectorAll("[data-view-link]").forEach((link) => {
     link.classList.toggle("active", link.dataset.viewLink === name);
@@ -92,7 +101,8 @@ document.addEventListener("click", (event) => {
   const viewLink = event.target.closest("[data-view-link]");
   if (viewLink) {
     event.preventDefault();
-    showView(viewLink.dataset.viewLink);
+    const label = viewLink.querySelector("span")?.textContent?.trim() || viewLink.dataset.viewLink;
+    showView(viewLink.dataset.viewLink, label);
   }
 
   const likeButton = event.target.closest(".like-button");

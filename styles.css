@@ -101,6 +101,7 @@ a {
 }
 
 .nav-item {
+  position: relative;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -122,6 +123,18 @@ a {
 
 .nav-item.active {
   font-weight: 800;
+}
+
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 18px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 2px var(--bg);
 }
 
 .nav-icon {
