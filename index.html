@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q Home</title>
+    <link rel="icon" href="./assets/twitter.png" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <a class="brand" href="#" aria-label="Q home">
+          <img src="./assets/twitter 2.png" alt="X logo" />
+        </a>
+
+        <nav class="main-nav">
+          <a class="nav-item active" href="#home" data-view-link="home">
+            <img class="nav-icon" src="./assets/home icon.png" alt="Home" />
+            <span>Home</span>
+          </a>
+          <a class="nav-item" href="#explore" data-view-link="explore">
+            <img class="nav-icon" src="./assets/explore icon.png" alt="Explore" />
+            <span>Explore</span>
+          </a>
+          <a class="nav-item" href="#notifications">
+            <span class="nav-icon" aria-hidden="true">◌</span>
+            <span>Notifications</span>
+          </a>
+          <a class="nav-item" href="#messages">
+            <span class="nav-icon" aria-hidden="true">✉</span>
+            <span>Messages</span>
+          </a>
+          <a class="nav-item" href="#bookmarks">
+            <span class="nav-icon" aria-hidden="true">▱</span>
+            <span>Bookmarks</span>
+          </a>
+          <a class="nav-item" href="#profile">
+            <span class="nav-icon" aria-hidden="true">◉</span>
+            <span>Profile</span>
+          </a>
+        </nav>
+
+        <button class="primary-action" id="openCompose" type="button">Post</button>
+
+        <button class="account-card" id="openLogin" type="button">
+          <img class="avatar" src="./assets/x profile.jpg" alt="Q account avatar" />
+          <span>
+            <strong>Qhawekazi</strong>
+            <small>@StoryTeller</small>
+          </span>
+          <b aria-hidden="true">···</b>
+        </button>
+      </aside>
+
+      <main class="timeline" id="mainContent">
+        <header class="topbar">
+          <div>
+            <h1 id="viewTitle">Home</h1>
+            <p>For you</p>
+          </div>
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </header>
+
+        <section class="compose-card home-only" aria-label="Create post">
+          <img class="avatar" src="./assets/avatar-me.svg" alt="" />
+          <form class="compose-form" id="inlineCompose">
+            <textarea id="tweetInput" maxlength="280" placeholder="What's happening?" aria-label="Post text"></textarea>
+            <div class="compose-tools">
+              <div class="tool-row" aria-hidden="true">
+                <span>▧</span>
+                <span>GIF</span>
+                <span>☻</span>
+                <span>⌖</span>
+              </div>
+              <div class="post-actions">
+                <span id="charCount">280</span>
+                <button class="small-primary" type="submit" disabled>Post</button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="feed-view" id="homeView" aria-label="Timeline feed">
+          <article class="tweet">
+            <img class="avatar" src="./assets/avatar-1.svg" alt="Anele avatar" />
+            <div class="tweet-body">
+              <header>
+                <strong>Anele Codes</strong>
+                <span>@aneledev · 12m</span>
+              </header>
+              <p>Just shipped a responsive Q timeline clone. The desktop grid breathes, the mobile nav behaves, and the tweet box actually posts. Clean UI remains undefeated.</p>
+              <img class="tweet-media" src="./assets/media-dashboard.svg" alt="Responsive social dashboard mockup" />
+              <div class="tweet-actions">
+                <button type="button">💬 <span>24</span></button>
+                <button type="button" class="repost-button">↻ <span>118</span></button>
+                <button type="button" class="like-button">♡ <span>1.8K</span></button>
+                <button type="button" class="bookmark-button">▱</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tweet">
+            <img class="avatar" src="./assets/avatar-2.svg" alt="Zaio avatar" />
+            <div class="tweet-body">
+              <header>
+                <strong>Zaio Project Lab</strong>
+                <span>@zaiohq · 34m</span>
+              </header>
+              <p>Frontend checklist: layout, feed, sidebar, composer, interactions, responsiveness, dark mode, custom views, and deployment readiness. That is how you collect marks properly.</p>
+              <div class="tweet-actions">
+                <button type="button">💬 <span>41</span></button>
+                <button type="button" class="repost-button">↻ <span>206</span></button>
+                <button type="button" class="like-button">♡ <span>3.4K</span></button>
+                <button type="button" class="bookmark-button">▱</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tweet">
+            <img class="avatar" src="./assets/avatar-3.svg" alt="Naledi avatar" />
+            <div class="tweet-body">
+              <header>
+                <strong>Naledi UX</strong>
+                <span>@nalediux · 1h</span>
+              </header>
+              <p>Small screens deserve real design too. Bottom navigation, readable spacing, and no mystery horizontal scroll. Your cousin's Android has been considered.</p>
+              <img class="tweet-media" src="./assets/media-phone.svg" alt="Mobile social app interface mockup" />
+              <div class="tweet-actions">
+                <button type="button">💬 <span>9</span></button>
+                <button type="button" class="repost-button">↻ <span>52</span></button>
+                <button type="button" class="like-button">♡ <span>890</span></button>
+                <button type="button" class="bookmark-button">▱</button>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="explore-view" id="exploreView" aria-label="Explore" hidden>
+          <div class="search-panel">
+            <label for="exploreSearch">Search Q</label>
+            <input id="exploreSearch" type="search" placeholder="Search posts, people, or hashtags" />
+          </div>
+          <div class="explore-grid">
+            <article>
+              <span>Trending in South Africa</span>
+              <strong>#ZaioProjects</strong>
+              <small>18.4K posts</small>
+            </article>
+            <article>
+              <span>Technology</span>
+              <strong>Responsive CSS</strong>
+              <small>8,920 posts</small>
+            </article>
+            <article>
+              <span>Design</span>
+              <strong>Dark mode UI</strong>
+              <small>5,112 posts</small>
+            </article>
+            <article>
+              <span>Web Dev</span>
+              <strong>Netlify Deploys</strong>
+              <small>3,406 posts</small>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <aside class="rightbar" aria-label="Secondary">
+        <section class="search-box">
+          <label for="siteSearch">Search</label>
+          <input id="siteSearch" type="search" placeholder="Search Q" />
+        </section>
+
+        <section class="panel">
+          <h2>Subscribe to Premium</h2>
+          <p>Unlock longer posts, deeper analytics, and a shinier badge for your Q timeline.</p>
+          <button type="button">Subscribe</button>
+        </section>
+
+        <section class="panel trends">
+          <h2>What's happening</h2>
+          <a href="#explore" data-view-link="explore">
+            <span>Project Simulation · Trending</span>
+            <strong>#TwitterClone</strong>
+            <small>24.7K posts</small>
+          </a>
+          <a href="#explore" data-view-link="explore">
+            <span>Frontend · Trending</span>
+            <strong>#DarkMode</strong>
+            <small>12.1K posts</small>
+          </a>
+          <a href="#explore" data-view-link="explore">
+            <span>Deployment · Trending</span>
+            <strong>Netlify</strong>
+            <small>7,620 posts</small>
+          </a>
+        </section>
+
+        <section class="panel who-to-follow">
+          <h2>Who to follow</h2>
+          <div>
+            <img class="avatar" src="./assets/avatar-4.svg" alt="Cursor avatar" />
+            <span><strong>Cursor Build</strong><small>@cursorassist</small></span>
+            <button type="button">Follow</button>
+          </div>
+          <div>
+            <img class="avatar" src="./assets/avatar-5.svg" alt="Netlify avatar" />
+            <span><strong>Netlify Ops</strong><small>@deployfast</small></span>
+            <button type="button">Follow</button>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile primary">
+      <a class="active" href="#home" data-view-link="home">⌂</a>
+      <a href="#explore" data-view-link="explore">#</a>
+      <button type="button" id="mobileCompose">＋</button>
+      <a href="#notifications">◌</a>
+      <a href="#messages">✉</a>
+    </nav>
+
+    <dialog class="modal" id="composeModal">
+      <form method="dialog" class="modal-card" id="modalComposeForm">
+        <button class="close-button" value="cancel" aria-label="Close compose" type="submit">×</button>
+        <h2>Create post</h2>
+        <textarea id="modalTweetInput" maxlength="280" placeholder="What should Q know?" aria-label="Modal post text"></textarea>
+        <div class="modal-actions">
+          <span id="modalCharCount">280</span>
+          <button class="small-primary" id="modalPostButton" value="default" type="submit" disabled>Post</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="loginModal">
+      <form method="dialog" class="modal-card login-card">
+        <button class="close-button" value="cancel" aria-label="Close login" type="submit">×</button>
+        <img src="./assets/x-logo.svg" alt="X logo" />
+        <h2>Sign in to Q</h2>
+        <input type="email" placeholder="Email or username" aria-label="Email or username" />
+        <input type="password" placeholder="Password" aria-label="Password" />
+        <button class="small-primary" value="default" type="submit">Sign in</button>
+      </form>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,661 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f7f9f9;
+  --surface-strong: #eff3f4;
+  --text: #0f1419;
+  --muted: #536471;
+  --border: #eff3f4;
+  --accent: #111111;
+  --accent-text: #ffffff;
+  --blue: #1d9bf0;
+  --green: #00ba7c;
+  --pink: #f91880;
+  --shadow: 0 18px 60px rgba(15, 20, 25, 0.16);
+}
+
+body.dark {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #16181c;
+  --surface-strong: #202327;
+  --text: #e7e9ea;
+  --muted: #71767b;
+  --border: #2f3336;
+  --accent: #eff3f4;
+  --accent-text: #0f1419;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  width: min(100%, 1320px);
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 275px minmax(0, 600px) minmax(290px, 360px);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 10px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-right: 1px solid var(--border);
+}
+
+.brand {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 999px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.brand img,
+.login-card img {
+  width: 32px;
+  height: 32px;
+}
+
+.main-nav {
+  display: grid;
+  gap: 4px;
+}
+
+.nav-item {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 16px 12px 12px;
+  border-radius: 999px;
+  font-size: 20px;
+  transition: background 160ms ease;
+}
+
+.nav-item:hover,
+.brand:hover,
+.account-card:hover,
+.icon-button:hover,
+.mobile-nav a:hover,
+.mobile-nav button:hover {
+  background: var(--surface-strong);
+}
+
+.nav-item.active {
+  font-weight: 800;
+}
+
+.nav-icon {
+  width: 28px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.primary-action,
+.small-primary,
+.panel button,
+.who-to-follow button {
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary-action {
+  width: 90%;
+  min-height: 52px;
+  border-radius: 999px;
+  font-size: 17px;
+}
+
+.small-primary {
+  min-width: 76px;
+  min-height: 36px;
+  border-radius: 999px;
+  padding: 0 18px;
+}
+
+.small-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.account-card {
+  margin-top: auto;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 999px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.account-card span,
+.who-to-follow span {
+  display: grid;
+  gap: 2px;
+}
+
+.account-card small,
+.tweet span,
+.panel small,
+.panel p,
+.explore-grid span,
+.explore-grid small,
+.topbar p {
+  color: var(--muted);
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.timeline {
+  min-height: 100vh;
+  border-right: 1px solid var(--border);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.topbar p {
+  margin: 3px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.compose-card {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.compose-form textarea,
+.modal-card textarea {
+  width: 100%;
+  min-height: 88px;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.compose-tools,
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tool-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.post-actions,
+.modal-actions {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tweet {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tweet:hover {
+  background: color-mix(in srgb, var(--surface) 42%, transparent);
+}
+
+.tweet-body header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.tweet-body p {
+  margin: 0 0 12px;
+  line-height: 1.45;
+}
+
+.tweet-media {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.tweet-actions {
+  max-width: 440px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(48px, 1fr));
+  color: var(--muted);
+}
+
+.tweet-actions button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tweet-actions button:hover {
+  color: var(--blue);
+}
+
+.tweet-actions .liked {
+  color: var(--pink);
+}
+
+.tweet-actions .reposted {
+  color: var(--green);
+}
+
+.tweet-actions .bookmarked {
+  color: var(--blue);
+}
+
+.rightbar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+  padding: 10px 0 24px 28px;
+}
+
+.search-box {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding-bottom: 10px;
+  background: var(--bg);
+}
+
+.search-box label,
+.search-panel label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.search-box input,
+.search-panel input,
+.login-card input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0 18px;
+  outline: 0;
+}
+
+.search-box input:focus,
+.search-panel input:focus,
+.login-card input:focus {
+  border-color: var(--blue);
+  background: var(--bg);
+}
+
+.panel,
+.explore-grid article {
+  background: var(--surface);
+  border-radius: 8px;
+}
+
+.panel {
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.panel p {
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.panel button,
+.who-to-follow button {
+  min-height: 34px;
+  border-radius: 999px;
+  padding: 0 16px;
+}
+
+.trends {
+  padding: 0;
+  overflow: hidden;
+}
+
+.trends h2 {
+  padding: 14px 16px 4px;
+}
+
+.trends a {
+  display: grid;
+  gap: 4px;
+  padding: 12px 16px;
+}
+
+.trends a:hover,
+.explore-grid article:hover {
+  background: var(--surface-strong);
+}
+
+.who-to-follow div {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.explore-view {
+  padding: 16px;
+}
+
+.search-panel {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-panel input {
+  border-radius: 8px;
+}
+
+.explore-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.explore-grid article {
+  display: grid;
+  gap: 5px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.explore-grid strong {
+  font-size: 19px;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.modal {
+  width: min(92vw, 560px);
+  border: 0;
+  padding: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+}
+
+.modal::backdrop {
+  background: rgba(83, 100, 113, 0.45);
+}
+
+.modal-card {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.modal-card h2 {
+  margin: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: var(--surface-strong);
+}
+
+.login-card {
+  place-items: stretch;
+}
+
+.login-card img {
+  justify-self: center;
+}
+
+@media (max-width: 1090px) {
+  .app-shell {
+    width: min(100%, 980px);
+    grid-template-columns: 88px minmax(0, 600px) minmax(280px, 1fr);
+  }
+
+  .sidebar {
+    align-items: center;
+    padding-inline: 10px;
+  }
+
+  .brand span,
+  .nav-item span:last-child,
+  .account-card span,
+  .account-card b {
+    display: none;
+  }
+
+  .nav-item,
+  .brand {
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .primary-action {
+    width: 52px;
+    min-width: 52px;
+    font-size: 0;
+  }
+
+  .primary-action::before {
+    content: "+";
+    font-size: 28px;
+  }
+
+  .account-card {
+    width: 62px;
+    grid-template-columns: 42px;
+  }
+}
+
+@media (max-width: 840px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding-bottom: 68px;
+  }
+
+  .sidebar,
+  .rightbar {
+    display: none;
+  }
+
+  .timeline {
+    border-right: 0;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    min-height: 58px;
+    border-top: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-nav a,
+  .mobile-nav button {
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 23px;
+    cursor: pointer;
+  }
+
+  .mobile-nav .active {
+    font-weight: 800;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar,
+  .compose-card,
+  .tweet {
+    padding-inline: 12px;
+  }
+
+  .compose-card,
+  .tweet {
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .compose-form textarea,
+  .modal-card textarea {
+    font-size: 18px;
+  }
+
+  .tool-row {
+    max-width: 160px;
+    gap: 10px;
+  }
+
+  .tweet-actions {
+    max-width: none;
+  }
+}
