@@ -100,6 +100,13 @@ modalComposeForm.addEventListener("submit", (event) => {
 document.addEventListener("click", (event) => {
   const viewLink = event.target.closest("[data-view-link]");
   if (viewLink) {
+    if (viewLink.classList.contains("more-toggle")) {
+      event.preventDefault();
+      const menu = viewLink.parentElement.querySelector(".more-menu");
+      menu.classList.toggle("open");
+      return;
+    }
+
     event.preventDefault();
     const label = viewLink.querySelector("span")?.textContent?.trim() || viewLink.dataset.viewLink;
     showView(viewLink.dataset.viewLink, label);

@@ -112,6 +112,37 @@ a {
   transition: background 160ms ease;
 }
 
+.more-menu-wrap {
+  display: grid;
+  gap: 4px;
+}
+
+.more-toggle {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.more-menu {
+  display: none;
+  margin-left: 10px;
+  padding-left: 8px;
+  border-left: 2px solid var(--border);
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+
+.more-menu.open {
+  display: grid;
+}
+
+.more-menu .more-item {
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
 .nav-item:hover,
 .brand:hover,
 .account-card:hover,
