@@ -113,6 +113,7 @@ a {
 }
 
 .more-menu-wrap {
+  position: relative;
   display: grid;
   gap: 4px;
 }
@@ -127,11 +128,18 @@ a {
 
 .more-menu {
   display: none;
-  margin-left: 10px;
-  padding-left: 8px;
-  border-left: 2px solid var(--border);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 190px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
   grid-template-columns: 1fr;
   gap: 2px;
+  z-index: 8;
 }
 
 .more-menu.open {
@@ -139,8 +147,9 @@ a {
 }
 
 .more-menu .more-item {
-  padding: 8px 12px;
+  padding: 10px 12px;
   font-size: 16px;
+  border-radius: 10px;
 }
 
 .nav-item:hover,
