@@ -502,6 +502,29 @@ a {
   box-shadow: -1px -4px 0 -1px currentColor, 8px -4px 0 -1px currentColor;
 }
 
+.location-icon::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.location-icon::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
 .post-actions,
 .modal-actions {
   color: var(--muted);
