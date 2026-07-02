@@ -265,8 +265,7 @@ a {
 .panel small,
 .panel p,
 .explore-grid span,
-.explore-grid small,
-.topbar p {
+.explore-grid small {
   color: var(--muted);
 }
 
@@ -290,21 +289,54 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 0 16px 0 0;
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(16px);
 }
 
-.topbar h1 {
-  margin: 0;
-  font-size: 20px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
-.topbar p {
-  margin: 3px 0 0;
-  font-size: 13px;
-  font-weight: 700;
+.home-tabs {
+  align-self: stretch;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.feed-tab {
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.feed-tab:hover {
+  background: var(--surface-strong);
+}
+
+.feed-tab.active {
+  color: var(--text);
+}
+
+.feed-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 58px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--blue);
+  transform: translateX(-50%);
 }
 
 .icon-button {

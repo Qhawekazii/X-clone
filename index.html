@@ -80,9 +80,10 @@
 
       <main class="timeline" id="mainContent">
         <header class="topbar">
-          <div>
-            <h1 id="viewTitle">Home</h1>
-            <p>For you</p>
+          <div class="home-tabs" aria-label="Timeline filter">
+            <h1 id="viewTitle" class="sr-only">Home</h1>
+            <button class="feed-tab active" type="button">For you</button>
+            <button class="feed-tab" type="button">Following</button>
           </div>
           <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
             <span aria-hidden="true">◐</span>
