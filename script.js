@@ -22,6 +22,37 @@ if (savedTheme === "dark") {
   body.classList.add("dark");
 }
 
+function normalizeButtonLabels(scope = document) {
+  scope.querySelectorAll(".tweet-actions").forEach((actions) => {
+    const buttons = actions.querySelectorAll("button");
+    const labels = ["Reply", "Repost", "Like", "Save"];
+
+    buttons.forEach((button, index) => {
+      const count = button.querySelector("span")?.textContent?.trim();
+      const baseLabel = button.classList.contains("liked")
+        ? "Liked"
+        : button.classList.contains("bookmarked")
+          ? "Saved"
+          : labels[index];
+
+      button.textContent = count ? `${baseLabel} ${count}` : baseLabel;
+    });
+  });
+
+  const tools = document.querySelector(".tool-row");
+  if (tools) {
+    tools.innerHTML = "<span>Media</span><span>GIF</span><span>Poll</span><span>Schedule</span>";
+  }
+
+  const themeLabel = document.querySelector("#themeToggle span");
+  if (themeLabel) themeLabel.textContent = "Mode";
+
+  const mobileItems = document.querySelectorAll(".mobile-nav a, .mobile-nav button");
+  ["Home", "Explore", "Post", "Alerts", "Chat"].forEach((label, index) => {
+    if (mobileItems[index]) mobileItems[index].textContent = label;
+  });
+}
+
 function updateComposer(input, count, button) {
   const remaining = 280 - input.value.length;
   count.textContent = remaining;
@@ -49,6 +80,7 @@ function createTweet(text) {
   `;
   article.querySelector("p").textContent = text;
   homeView.prepend(article);
+  normalizeButtonLabels(article);
 }
 
 function showView(name, title = null) {
@@ -128,6 +160,7 @@ document.addEventListener("click", (event) => {
     bookmarkButton.classList.toggle("bookmarked");
     bookmarkButton.textContent = bookmarkButton.classList.contains("bookmarked") ? "▰" : "▱";
   }
+  normalizeButtonLabels();
 });
 
 function openComposeModal() {
@@ -140,3 +173,4 @@ mobileCompose.addEventListener("click", openComposeModal);
 openLogin.addEventListener("click", () => loginModal.showModal());
 
 showView(location.hash.replace("#", "") === "explore" ? "explore" : "home");
+normalizeButtonLabels();
