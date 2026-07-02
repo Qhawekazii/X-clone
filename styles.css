@@ -552,9 +552,54 @@ a {
 }
 
 .trends a {
+  position: relative;
   display: grid;
-  gap: 4px;
+  grid-template-columns: 34px 1fr 30px;
+  align-items: center;
+  column-gap: 10px;
   padding: 12px 16px;
+}
+
+.trends a::before {
+  content: "#";
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.trends a:nth-of-type(3)::before {
+  content: ">";
+}
+
+.trends a::after {
+  content: "...";
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.trends a:hover::after {
+  background: color-mix(in srgb, var(--blue) 14%, transparent);
+  color: var(--blue);
+}
+
+.trends a > span {
+  display: none;
+}
+
+.trends a strong,
+.trends a small {
+  grid-column: 2;
 }
 
 .trends a:hover,
