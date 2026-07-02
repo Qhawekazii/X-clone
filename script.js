@@ -45,7 +45,10 @@ function normalizeButtonLabels(scope = document) {
   }
 
   const themeLabel = document.querySelector("#themeToggle span");
-  if (themeLabel) themeLabel.textContent = "Mode";
+  if (themeLabel) {
+    themeLabel.textContent = "";
+    themeLabel.classList.add("theme-icon");
+  }
 
   const mobileItems = document.querySelectorAll(".mobile-nav a, .mobile-nav button");
   ["Home", "Explore", "Post", "Alerts", "Chat"].forEach((label, index) => {
