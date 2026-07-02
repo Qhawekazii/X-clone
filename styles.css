@@ -392,10 +392,93 @@ a {
 .tool-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   color: var(--blue);
   font-size: 14px;
   font-weight: 800;
+}
+
+.tool-icon {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.tool-icon:hover {
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+}
+
+.media-icon::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+}
+
+.media-icon::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: 11px;
+  width: 10px;
+  height: 7px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: skewX(-24deg);
+}
+
+.gif-icon::before {
+  content: "GIF";
+  position: absolute;
+  inset: 9px 6px;
+  display: grid;
+  place-items: center;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.poll-icon::before,
+.poll-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 9px;
+  width: 4px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.poll-icon::before {
+  left: 10px;
+  height: 10px;
+  box-shadow: 7px -5px 0 currentColor, 14px -1px 0 currentColor;
+}
+
+.schedule-icon::before {
+  content: "";
+  position: absolute;
+  inset: 8px 9px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+}
+
+.schedule-icon::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 14px;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 5px 0 currentColor;
 }
 
 .post-actions,

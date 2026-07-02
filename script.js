@@ -44,7 +44,12 @@ function normalizeButtonLabels(scope = document) {
 
   const tools = document.querySelector(".tool-row");
   if (tools) {
-    tools.innerHTML = "<span>Media</span><span>GIF</span><span>Poll</span><span>Schedule</span>";
+    tools.innerHTML = `
+      <button class="tool-icon media-icon" type="button" aria-label="Add media"></button>
+      <button class="tool-icon gif-icon" type="button" aria-label="Add GIF"></button>
+      <button class="tool-icon poll-icon" type="button" aria-label="Add poll"></button>
+      <button class="tool-icon schedule-icon" type="button" aria-label="Schedule post"></button>
+    `;
   }
 
   const themeLabel = document.querySelector("#themeToggle span");
