@@ -393,7 +393,7 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--blue);
+  color: var(--muted);
   font-size: 14px;
   font-weight: 800;
 }
@@ -405,12 +405,13 @@ a {
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--blue);
+  color: var(--muted);
   cursor: pointer;
 }
 
 .tool-icon:hover {
-  background: color-mix(in srgb, var(--blue) 12%, transparent);
+  background: var(--surface-strong);
+  color: var(--text);
 }
 
 .media-icon::before {
@@ -479,6 +480,26 @@ a {
   height: 2px;
   background: currentColor;
   box-shadow: 0 5px 0 currentColor;
+}
+
+.emoji-icon::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.emoji-icon::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  width: 10px;
+  height: 6px;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0 0 999px 999px;
+  box-shadow: -1px -4px 0 -1px currentColor, 8px -4px 0 -1px currentColor;
 }
 
 .post-actions,

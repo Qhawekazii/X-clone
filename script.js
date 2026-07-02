@@ -48,6 +48,7 @@ function normalizeButtonLabels(scope = document) {
       <button class="tool-icon media-icon" type="button" aria-label="Add media"></button>
       <button class="tool-icon gif-icon" type="button" aria-label="Add GIF"></button>
       <button class="tool-icon poll-icon" type="button" aria-label="Add poll"></button>
+      <button class="tool-icon emoji-icon" type="button" aria-label="Add emoji"></button>
       <button class="tool-icon schedule-icon" type="button" aria-label="Schedule post"></button>
     `;
   }
