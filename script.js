@@ -5,6 +5,7 @@ const charCount = document.querySelector("#charCount");
 const inlineCompose = document.querySelector("#inlineCompose");
 const inlinePostButton = inlineCompose.querySelector("button[type='submit']");
 const homeView = document.querySelector("#homeView");
+const followingView = document.querySelector("#followingView");
 const exploreView = document.querySelector("#exploreView");
 const viewTitle = document.querySelector("#viewTitle");
 const openCompose = document.querySelector("#openCompose");
@@ -21,6 +22,8 @@ const savedTheme = localStorage.getItem("q-theme");
 if (savedTheme === "dark") {
   body.classList.add("dark");
 }
+
+let activeFeed = "for-you";
 
 function normalizeButtonLabels(scope = document) {
   scope.querySelectorAll(".tweet-actions").forEach((actions) => {
@@ -84,11 +87,30 @@ function createTweet(text) {
   article.querySelector("p").textContent = text;
   homeView.prepend(article);
   normalizeButtonLabels(article);
+  showFeed("for-you");
+}
+
+function showFeed(feedName) {
+  activeFeed = feedName;
+  const isFollowing = feedName === "following";
+
+  homeView.hidden = isFollowing;
+  followingView.hidden = !isFollowing;
+
+  document.querySelectorAll("[data-feed-tab]").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.feedTab === feedName);
+  });
 }
 
 function showView(name, title = null) {
   const isExplore = name === "explore";
-  homeView.hidden = isExplore;
+  if (isExplore) {
+    homeView.hidden = true;
+    followingView.hidden = true;
+  } else {
+    showFeed(activeFeed);
+  }
+
   document.querySelector(".home-only").hidden = isExplore;
   exploreView.hidden = !isExplore;
 
@@ -133,6 +155,12 @@ modalComposeForm.addEventListener("submit", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+  const feedTab = event.target.closest("[data-feed-tab]");
+  if (feedTab) {
+    showView("home");
+    showFeed(feedTab.dataset.feedTab);
+  }
+
   const viewLink = event.target.closest("[data-view-link]");
   if (viewLink) {
     if (viewLink.classList.contains("more-toggle")) {

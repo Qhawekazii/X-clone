@@ -82,8 +82,8 @@
         <header class="topbar">
           <div class="home-tabs" aria-label="Timeline filter">
             <h1 id="viewTitle" class="sr-only">Home</h1>
-            <button class="feed-tab active" type="button">For you</button>
-            <button class="feed-tab" type="button">Following</button>
+            <button class="feed-tab active" type="button" data-feed-tab="for-you">For you</button>
+            <button class="feed-tab" type="button" data-feed-tab="following">Following</button>
           </div>
           <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
             <span class="theme-icon" aria-hidden="true"></span>
@@ -159,6 +159,42 @@
                 <button type="button" class="repost-button">↻ <span>52</span></button>
                 <button type="button" class="like-button">♡ <span>890</span></button>
                 <button type="button" class="bookmark-button">▱</button>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="feed-view" id="followingView" aria-label="Following feed" hidden>
+          <article class="tweet">
+            <img class="avatar" src="./assets/avatar-4.svg" alt="Cursor Build avatar" />
+            <div class="tweet-body">
+              <header>
+                <strong>Cursor Build</strong>
+                <span>@cursorassist - 15m</span>
+              </header>
+              <p>Working through a clean feature list today: tabbed feeds, better interactions, and a project history that shows steady progress.</p>
+              <div class="tweet-actions">
+                <button type="button">Reply <span>12</span></button>
+                <button type="button" class="repost-button">Repost <span>44</span></button>
+                <button type="button" class="like-button">Like <span>312</span></button>
+                <button type="button" class="bookmark-button">Save</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tweet">
+            <img class="avatar" src="./assets/avatar-5.svg" alt="Netlify Ops avatar" />
+            <div class="tweet-body">
+              <header>
+                <strong>Netlify Ops</strong>
+                <span>@deployfast - 42m</span>
+              </header>
+              <p>Reminder: a simple static project can still feel production-ready when assets load, pages respond, and the README tells the marker exactly what to test.</p>
+              <div class="tweet-actions">
+                <button type="button">Reply <span>8</span></button>
+                <button type="button" class="repost-button">Repost <span>29</span></button>
+                <button type="button" class="like-button">Like <span>204</span></button>
+                <button type="button" class="bookmark-button">Save</button>
               </div>
             </div>
           </article>
