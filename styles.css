@@ -525,6 +525,29 @@ a {
   background: currentColor;
 }
 
+.content-icon::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  width: 14px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+}
+
+.content-icon::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 2px;
+  height: 9px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 11px 0 -0.5px currentColor;
+}
+
 .post-actions,
 .modal-actions {
   color: var(--muted);
